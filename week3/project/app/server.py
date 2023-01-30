@@ -74,9 +74,7 @@ def predict(request: PredictRequest):
     logger.info("/predict")
     start = datetime.now()
     scores=classifier.predict_proba(request.__dict__)
-    logger.info(scores)
     label=classifier.predict_label(request.__dict__)
-    logger.info(label)
     response=PredictResponse(scores=scores,label=label)
     end=datetime.now()
     logger.info(json.dumps({
